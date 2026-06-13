@@ -81,7 +81,66 @@ placeholder=
 
 <button>
 
+<input
+id="song"
+placeholder=
+"Pega nombre o link de YouTube">
+
+<br>
+
+<button
+onclick="agregarCancion()">
+
 Agregar a la cola
+
+</button>
+
+<div id="resultado"></div>
+
+<script>
+
+function agregarCancion(){
+
+let valor=
+document
+.getElementById("song")
+.value;
+
+if(!valor){
+
+alert(
+"Ingresa una canción"
+);
+
+return;
+
+}
+
+document
+.getElementById(
+"resultado"
+)
+.innerHTML=
+
+`
+<br>
+
+✅ Canción agregada
+
+<br><br>
+
+🎵 ${valor}
+
+<br><br>
+
+⏱️ Próximo intento disponible:
+15 minutos
+
+`;
+
+}
+
+</script>
 
 </button>
 
