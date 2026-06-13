@@ -1,11 +1,11 @@
+```html
 <!DOCTYPE html>
 <html>
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width">
+<meta name="viewport" content="width=device-width">
 
 <title>Pedir Canción</title>
 
@@ -17,144 +17,18 @@ color:white;
 font-family:Arial;
 text-align:center;
 padding:40px;
+margin:0;
+}
+
+.card{
+background:#1b1b1b;
+padding:30px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
 }
 
 input{
 width:80%;
-padding:15px;
-border-radius:12px;
-border:none;
-}
-
-button{
-
-margin-top:20px;
-
-padding:16px;
-
-width:220px;
-
-background:#d89d30;
-
-border:none;
-
-border-radius:12px;
-
-font-weight:bold;
-
-}
-
-.card{
-
-background:#1b1b1b;
-
-padding:25px;
-
-border-radius:20px;
-
-max-width:600px;
-
-margin:auto;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-<h1>🎵 El Palenque</h1>
-
-<p>
-Agrega una canción
-(1 cada 15 minutos)
-</p>
-
-<input
-placeholder=
-"Pega nombre o link de YouTube">
-
-<br>
-
-<button>
-
-<input
-id="song"
-placeholder=
-"Pega nombre o link de YouTube">
-
-<br>
-
-<button
-onclick="agregarCancion()">
-
-Agregar a la cola
-
-</button>
-
-<div id="resultado"></div>
-
-<script>
-
-function agregarCancion(){
-
-let valor=
-document
-.getElementById("song")
-.value;
-
-if(!valor){
-
-alert(
-"Ingresa una canción"
-);
-
-return;
-
-}
-
-document
-.getElementById(
-"resultado"
-)
-.innerHTML=
-
-`
-<br>
-
-✅ Canción agregada
-
-<br><br>
-
-🎵 ${valor}
-
-<br><br>
-
-⏱️ Próximo intento disponible:
-15 minutos
-
-`;
-
-}
-
-</script>
-
-</button>
-
-<br><br>
-
-<a
-href="/">
-
-Volver
-
-</a>
-
-</div>
-
-</body>
-
-</html>
+padding:
+```
