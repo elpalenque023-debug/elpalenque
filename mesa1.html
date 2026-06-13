@@ -47,7 +47,7 @@ border-radius:15px;
 
 <h1>🍻 EL PALENQUE</h1>
 
-<h2>Mesa 1</h2>
+<h2 id="mesa"></h2>
 
 <p>Bienvenido</p>
 
@@ -69,8 +69,7 @@ href="https://wa.me/573105644863">
 📱 Pedir por WhatsApp
 
 </a>
-
+<script> const params = new URLSearchParams( window.location.search ); const mesa = params.get( "mesa" ) || "General"; document .getElementById( "mesa" ) .innerText= mesa; </script>
 </body>
 
 </html>
-```
