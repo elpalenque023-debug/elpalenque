@@ -20,71 +20,42 @@ text-align:center;
 }
 
 .card{
-
 max-width:700px;
-
 margin:auto;
-
 background:#1d1d1d;
-
 padding:30px;
-
 border-radius:20px;
-
 }
 
 input{
-
 width:90%;
-
 padding:16px;
-
 border:none;
-
 border-radius:12px;
-
 font-size:16px;
-
 }
 
 button{
-
 margin-top:20px;
-
 padding:16px;
-
 width:250px;
-
 border:none;
-
 border-radius:12px;
-
 background:#d89d30;
-
 font-weight:bold;
-
 cursor:pointer;
-
 }
 
 .item{
-
 background:#2a2a2a;
-
 padding:14px;
-
 margin:10px;
-
 border-radius:12px;
-
 }
 
 a{
-
 color:#d89d30;
-
 text-decoration:none;
-
 }
 
 </style>
@@ -96,6 +67,10 @@ text-decoration:none;
 <div class="card">
 
 <h1>🎵 EL PALENQUE</h1>
+
+<h3 id="mesa">
+📍 General
+</h3>
 
 <p>
 Agrega una canción
@@ -143,11 +118,35 @@ Todavía no hay canciones
 
 <script>
 
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const mesa =
+
+params.get(
+"mesa"
+)
+
+||
+
+"General";
+
+document
+.getElementById(
+"mesa"
+)
+.innerHTML=
+
+`📍 ${mesa}`;
+
 let canciones=[];
 
 function agregarCancion(){
 
-let valor=
+let valor =
+
 document
 .getElementById(
 "song"
@@ -164,7 +163,12 @@ return;
 
 }
 
-canciones.push(valor);
+canciones.push(
+{
+mesa,
+nombre:valor
+}
+);
 
 document
 .getElementById(
@@ -172,7 +176,16 @@ document
 )
 .innerHTML=
 
-"✅ Canción agregada";
+`
+
+✅ Canción agregada
+
+<br><br>
+
+📍 Desde:
+${mesa}
+
+`;
 
 render();
 
@@ -194,15 +207,23 @@ i<canciones.length;
 i++
 ){
 
-html+=`
+html +=
+
+`
 
 <div class="item">
 
 #${i+1}
 
-🎵
+<br><br>
 
-${canciones[i]}
+🎵
+${canciones[i].nombre}
+
+<br>
+
+📍
+${canciones[i].mesa}
 
 </div>
 
@@ -215,6 +236,7 @@ document
 "cola"
 )
 .innerHTML=
+
 html;
 
 }
@@ -224,4 +246,3 @@ html;
 </body>
 
 </html>
-```
