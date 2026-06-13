@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
 
-<title>El Palenque - Música</title>
+<title>EL PALENQUE</title>
 
 <style>
 
@@ -15,47 +16,32 @@ margin:0;
 background:#111;
 color:white;
 font-family:Arial;
-padding:30px;
 text-align:center;
+padding:50px;
 }
 
 .card{
 max-width:700px;
 margin:auto;
-background:#1d1d1d;
+background:#1b1b1b;
 padding:30px;
 border-radius:20px;
 }
 
-input{
-width:90%;
-padding:16px;
-border:none;
-border-radius:12px;
-font-size:16px;
-}
-
-button{
-margin-top:20px;
-padding:16px;
-width:250px;
-border:none;
-border-radius:12px;
-background:#d89d30;
-font-weight:bold;
-cursor:pointer;
-}
-
-.item{
-background:#2a2a2a;
-padding:14px;
-margin:10px;
-border-radius:12px;
-}
-
 a{
-color:#d89d30;
+display:block;
+margin:20px auto;
+padding:18px;
+max-width:320px;
+border-radius:14px;
+background:#d89d30;
+color:black;
 text-decoration:none;
+font-weight:bold;
+}
+
+h1{
+color:#d89d30;
 }
 
 </style>
@@ -66,51 +52,28 @@ text-decoration:none;
 
 <div class="card">
 
-<h1>🎵 EL PALENQUE</h1>
+<h1>🍻 EL PALENQUE</h1>
 
-<h3 id="mesa">
-📍 General
-</h3>
+<h2 id="mesa"></h2>
 
-<p>
-Agrega una canción
-(1 cada 15 minutos)
-</p>
-
-<input
-id="song"
-placeholder="Nombre o link de YouTube">
-
-<br>
-
-<button
-onclick="agregarCancion()">
-
-Agregar a la cola
-
-</button>
-
-<div id="resultado"></div>
-
-<br>
-
-<h3>Cola actual</h3>
-
-<div id="cola">
-
-<div class="item">
-
-Todavía no hay canciones
-
-</div>
-
-</div>
-
-<br>
+<p>Un lugar para compartir</p>
 
 <a href="/">
+🍔 Ver catálogo
+</a>
 
-← Volver al inicio
+<a
+id="musicaBtn"
+href="/musica.html">
+
+🎵 Pedir canción
+
+</a>
+
+<a
+href="https://wa.me/573105644863">
+
+📱 Pedir por WhatsApp
 
 </a>
 
@@ -118,15 +81,15 @@ Todavía no hay canciones
 
 <script>
 
-const params =
+const url =
 new URLSearchParams(
 window.location.search
 );
 
 const mesa =
 
-params.get(
-"mesa"
+url.get(
+"id"
 )
 
 ||
@@ -137,109 +100,22 @@ document
 .getElementById(
 "mesa"
 )
-.innerHTML=
-
-`📍 ${mesa}`;
-
-let canciones=[];
-
-function agregarCancion(){
-
-let valor =
+.innerText=
+mesa;
 
 document
 .getElementById(
-"song"
+"musicaBtn"
 )
-.value;
+.href=
 
-if(!valor){
+"/musica.html?mesa="
 
-alert(
-"Ingresa una canción"
++
+
+encodeURIComponent(
+mesa
 );
-
-return;
-
-}
-
-canciones.push(
-{
-mesa,
-nombre:valor
-}
-);
-
-document
-.getElementById(
-"resultado"
-)
-.innerHTML=
-
-`
-
-✅ Canción agregada
-
-<br><br>
-
-📍 Desde:
-${mesa}
-
-`;
-
-render();
-
-document
-.getElementById(
-"song"
-)
-.value="";
-
-}
-
-function render(){
-
-let html="";
-
-for(
-let i=0;
-i<canciones.length;
-i++
-){
-
-html +=
-
-`
-
-<div class="item">
-
-#${i+1}
-
-<br><br>
-
-🎵
-${canciones[i].nombre}
-
-<br>
-
-📍
-${canciones[i].mesa}
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById(
-"cola"
-)
-.innerHTML=
-
-html;
-
-}
 
 </script>
 
